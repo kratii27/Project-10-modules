@@ -1,0 +1,179 @@
+<style>
+  .aj {
+    background-image: linear-gradient(to bottom right, #F5EFEB, #7695a3);
+  }
+
+  .img {
+    width: 60px;
+    height: 60px;
+    /* border-radius: 50%; */
+    object-fit: cover;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg fixed-top aj">
+
+  <a class="navbar-brand" [routerLink]="['/dashboard']">
+    <img *ngIf="!isLogin()" src="assets/files/custom.png" height="55">
+    <img *ngIf="isLogin()" src="http://localhost:8080/User/profilePic/{{form.data.id}}" alt="profile" class="img"
+      align="center">
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">
+      <i class="fa fa-bars" style="color: #fff; font-size: 28px;"></i>
+    </span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+
+      <!-- Links shown when logged in -->
+      <ng-container *ngIf="isLogin()">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: #2F4156;">{{ 'Links.user' |
+            translate }}</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/user']"><i class="fa fa-user-circle"></i> {{ 'Links.AddUser' |
+              translate }}</a>
+            <a class="dropdown-item" [routerLink]="['/userlist']"><i class="fa fa-user-friends"></i> {{ 'Links.UserList'
+              | translate }}</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: #2F4156;">{{ 'Links.role' |
+            translate }}</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/role']"><i class="fa fa-user-tie"></i> {{ 'Links.AddRole' |
+              translate }}</a>
+            <a class="dropdown-item" [routerLink]="['/rolelist']"><i class="fa fa-user-friends"></i> {{ 'Links.RoleList'
+              | translate }}</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: #2F4156;">Use cases 1</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/reward']"><i class="fa fa-user-tie"></i>Reward</a>
+            <a class="dropdown-item" [routerLink]="['/rewardlist']"><i class="fa fa-user-friends"></i> Reward List</a>
+            <a class="dropdown-item" [routerLink]="['/emi']"><i class="fa fa-user-tie"></i>Add EMI</a>
+            <a class="dropdown-item" [routerLink]="['/emilist']"><i class="fa fa-user-friends"></i> EMI List</a>
+            <a class="dropdown-item" [routerLink]="['/promissory']"><i class="fa fa-user-tie"></i>Add promissory</a>
+            <a class="dropdown-item" [routerLink]="['/promissorylist']"><i class="fa fa-user-friends"></i> promissory
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/locker']"><i class="fa fa-user-tie"></i>Add locker</a>
+            <a class="dropdown-item" [routerLink]="['/lockerlist']"><i class="fa fa-user-friends"></i> locker List</a>
+            <a class="dropdown-item" [routerLink]="['/report']"><i class="fa fa-user-tie"></i>Add Report</a>
+            <a class="dropdown-item" [routerLink]="['/reportlist']"><i class="fa fa-user-friends"></i> Report List</a>
+            <a class="dropdown-item" [routerLink]="['/return']"><i class="fa fa-user-tie"></i>Add Return</a>
+            <a class="dropdown-item" [routerLink]="['/returnlist']"><i class="fa fa-user-friends"></i> Return List</a>
+            <a class="dropdown-item" [routerLink]="['/expensereport']"><i class="fa fa-user-tie"></i>Add Expense
+              Report</a>
+            <a class="dropdown-item" [routerLink]="['/expensereportlist']"><i class="fa fa-user-friends"></i>Expense
+              Report List</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: #2F4156;">Use cases 2</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/currency']"><i class="fa fa-user-tie"></i>Add Currency</a>
+            <a class="dropdown-item" [routerLink]="['/currencylist']"><i class="fa fa-user-friends"></i>Currency
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/translate']"><i class="fa fa-user-tie"></i>Add Translate</a>
+            <a class="dropdown-item" [routerLink]="['/translatelist']"><i class="fa fa-user-friends"></i>Translate
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/email']"><i class="fa fa-user-tie"></i>Add Email</a>
+            <a class="dropdown-item" [routerLink]="['/emaillist']"><i class="fa fa-user-friends"></i>Email List</a>
+            <a class="dropdown-item" [routerLink]="['/rating']"><i class="fa fa-user-tie"></i>Add Rating</a>
+            <a class="dropdown-item" [routerLink]="['/ratinglist']"><i class="fa fa-user-friends"></i>Rating List</a>
+            <a class="dropdown-item" [routerLink]="['/filter']"><i class="fa fa-user-tie"></i>Add Filter</a>
+            <a class="dropdown-item" [routerLink]="['/filterlist']"><i class="fa fa-user-friends"></i>Filter List</a>
+            <a class="dropdown-item" [routerLink]="['/faq']"><i class="fa fa-user-tie"></i>Add FAQ</a>
+            <a class="dropdown-item" [routerLink]="['/faqlist']"><i class="fa fa-user-friends"></i>FAQ List</a>
+            <a class="dropdown-item" [routerLink]="['/decryption']"><i class="fa fa-user-tie"></i>Add decryption</a>
+            <a class="dropdown-item" [routerLink]="['/decryptionlist']"><i class="fa fa-user-friends"></i>decryption
+              List</a>
+
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: #2F4156;">Use cases 3</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/thumbnail']"><i class="fa fa-user-tie"></i>Add thumbnail</a>
+            <a class="dropdown-item" [routerLink]="['/thumbnaillist']"><i class="fa fa-user-friends"></i>thumbnail
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/retention']"><i class="fa fa-user-tie"></i>Add retention</a>
+            <a class="dropdown-item" [routerLink]="['/retentionlist']"><i class="fa fa-user-friends"></i>retention
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/archival']"><i class="fa fa-user-tie"></i>Add archival</a>
+            <a class="dropdown-item" [routerLink]="['/archivallist']"><i class="fa fa-user-friends"></i>archival
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/block']"><i class="fa fa-user-tie"></i>Add Block</a>
+            <a class="dropdown-item" [routerLink]="['/blocklist']"><i class="fa fa-user-friends"></i>Block
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/feature']"><i class="fa fa-user-tie"></i>Add feature</a>
+            <a class="dropdown-item" [routerLink]="['/featurelist']"><i class="fa fa-user-friends"></i>feature
+              List</a>
+            <a class="dropdown-item" [routerLink]="['/queue']"><i class="fa fa-user-tie"></i>Add queue</a>
+            <a class="dropdown-item" [routerLink]="['/queuelist']"><i class="fa fa-user-friends"></i>queue
+              List</a>
+
+          </div>
+        </li>
+
+
+
+        <!-- Logged in user welcome dropdown -->
+        <li class="nav-item dropdown ml-3">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+            <span style="color: #2F4156;">
+              <b>{{ 'Greetings.HiUser' | translate:{name: form.data.fname, role: form.data.role} }}</b>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" (click)="forward()"><i class="fa fa-user-tie"></i> {{ 'Links.MyProfile' | translate
+              }}</a>
+            <a class="dropdown-item" [routerLink]="['/changepassword']"><i class="fa fa-edit"></i> {{
+              'Links.ChangePassword' | translate }}</a>
+            <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out-alt"></i> {{ 'Links.Logout' | translate
+              }}</a>
+          </div>
+        </li>
+
+      </ng-container>
+
+      <!-- Guest welcome dropdown shown when NOT logged in -->
+      <ng-container *ngIf="!isLogin()">
+        <li class="nav-item dropdown ml-3">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+            <span style="color: #2F4156;">
+              <b>{{ 'Greetings.HiGuest' | translate }}</b>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" [routerLink]="['/login']"><i class="fa fa-sign-in-alt"></i> {{ 'Links.Login' |
+              translate }}</a>
+            <a class="dropdown-item" [routerLink]="['/signup']"><i class="fa fa-registered"></i> {{ 'Links.signup' |
+              translate }}</a>
+          </div>
+        </li>
+      </ng-container>
+
+      <!-- Locale Selector -->
+      <li class="nav-item ml-2 d-flex align-items-center">
+        <select #locale (change)="changeLocale(locale.value)" class="form-control form-control-sm" style="width: auto;">
+          <option value="0">{{ 'LocaleSelect.Select' | translate }}</option>
+          <option value="en">{{ 'LocaleSelect.English' | translate }}</option>
+          <option value="hi">{{ 'LocaleSelect.Hindi' | translate }}</option>
+        </select>
+      </li>
+
+    </ul>
+  </div>
+</nav>

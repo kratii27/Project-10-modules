@@ -1,0 +1,113 @@
+<style type="text/css">
+.input-group-addon {
+  box-shadow: 9px 8px 7px #001a33;
+}
+
+.hm {
+  background-image: url('assets/files/add.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding-top: 75px;
+}
+</style>
+
+<div class="hm">
+  <main>
+    <div class="row pt-3">
+
+      <div class="col-md-4 mb-4"></div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card input-group-addon">
+          <div class="card-body">
+
+            <h3 *ngIf="!form.data.id" class="text-center default-text text-dark">Add Translate</h3>
+            <h3 *ngIf="form.data.id > 0" class="text-center default-text text-dark">Update Translate</h3>
+
+            <div>
+              <H4 align="center">
+                <div *ngIf="!form.error && form.message" class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{ form.message }}
+                </div>
+              </H4>
+              <H4 align="center">
+                <div *ngIf="form.error && form.message" class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{ form.message }}
+                </div>
+              </H4>
+            </div>
+
+            <div class="md-form">
+
+              <!-- Source Language -->
+              <span class="pl-sm-5"><b>Source Language</b> <span style="color: red;">*</span></span><br>
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-language grey-text" style="font-size: 1rem;"></i></div>
+                  </div>
+                  <input type="text" class="form-control" name="sourceLanguage" [(ngModel)]="form.data.sourceLanguage" placeholder="Enter Source Language">
+                </div>
+              </div>
+              <font color="red" class="pl-sm-5">{{ form.inputerror.sourceLanguage }}</font><br>
+
+              <!-- Target Language -->
+              <span class="pl-sm-5"><b>Target Language</b> <span style="color: red;">*</span></span><br>
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-language grey-text" style="font-size: 1rem;"></i></div>
+                  </div>
+                  <input type="text" class="form-control" name="targetLanguage" [(ngModel)]="form.data.targetLanguage" placeholder="Enter Target Language">
+                </div>
+              </div>
+              <font color="red" class="pl-sm-5">{{ form.inputerror.targetLanguage }}</font><br>
+
+              <!-- Input Text -->
+              <span class="pl-sm-5"><b>Input Text</b> <span style="color: red;">*</span></span><br>
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-pencil grey-text" style="font-size: 1rem;"></i></div>
+                  </div>
+                  <input type="text" class="form-control" name="inputText" [(ngModel)]="form.data.inputText" placeholder="Enter Input Text">
+                </div>
+              </div>
+              <font color="red" class="pl-sm-5">{{ form.inputerror.inputText }}</font><br>
+
+              <!-- Translated Text -->
+              <span class="pl-sm-5"><b>Translated Text</b> <span style="color: red;">*</span></span><br>
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-check-square grey-text" style="font-size: 1rem;"></i></div>
+                  </div>
+                  <input type="text" class="form-control" name="translatedText" [(ngModel)]="form.data.translatedText" placeholder="Enter Translated Text">
+                </div>
+              </div>
+              <font color="red" class="pl-sm-5">{{ form.inputerror.translatedText }}</font><br>
+
+              <!-- Buttons -->
+              <div *ngIf="!form.data.id" class="text-center">
+                <input type="submit" (click)="submit()" class="btn btn-success btn-md" style="font-size: 17px" value="Save">&nbsp;
+                <input type="submit" (click)="reset()" class="btn btn-warning btn-md" style="font-size: 17px" value="Reset">
+              </div>
+              <div *ngIf="form.data.id > 0" class="text-center">
+                <input type="submit" (click)="submit()" class="btn btn-success btn-md" style="font-size: 17px" value="Update">&nbsp;
+                <input type="submit" (click)="forward('/translatelist')" class="btn btn-warning btn-md" style="font-size: 17px" value="List">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4"></div>
+
+    </div>
+  </main>
+</div>
+
